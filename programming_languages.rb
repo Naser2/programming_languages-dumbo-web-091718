@@ -30,15 +30,18 @@ languages = {
   }
 }
 
-def reformat_languages
+def reformat_languages(languages)
   new_hash = {}
-  
-  languages.keys
-  binding pry 
-  languages.each do |oo_or_func, languages |
-    
-  end 
-  
+  languages.each do |style, language|
+    language.each do |name , definition|
+      new_hash[name] ||= definition
+      new_hash[name][:style] ||= Array.new 
+      new_hash[name][:style] << style
+    end
+  end
+  new_hash
+end
+print reformat_languages(languages)
   
   
 end 
